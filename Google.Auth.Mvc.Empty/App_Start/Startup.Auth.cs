@@ -3,7 +3,9 @@ using Google.Auth.Mvc.Empty.Models;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin;
+using Microsoft.Owin.Security;
 using Microsoft.Owin.Security.Cookies;
+using Microsoft.Owin.Security.Facebook;
 using Owin;
 using Owin.Security.Providers.GooglePlus;
 
@@ -63,9 +65,19 @@ namespace Google.Auth.Mvc.Empty
             //    ClientId = "",
             //    ClientSecret = ""
             //});
-            app.UseGooglePlusAuthentication(
-                clientId: "904155291301-cgh4235i893hd7mkmfefddq25svtjfdv.apps.googleusercontent.com",
-                clientSecret: "dfFVroejqwVxheNMJEym027O");
+
+
+            GooglePlusAuthenticationOptions options = new GooglePlusAuthenticationOptions();
+            options.AuthenticationMode = AuthenticationMode.Passive;
+            options.ClientId = "904155291301-cgh4235i893hd7mkmfefddq25svtjfdv.apps.googleusercontent.com";
+            options.ClientSecret = "dfFVroejqwVxheNMJEym027O";
+            options.Scope.Add("email");
+            
+
+            //app.UseGooglePlusAuthentication(
+            //    clientId: "904155291301-cgh4235i893hd7mkmfefddq25svtjfdv.apps.googleusercontent.com",
+            //    clientSecret: "dfFVroejqwVxheNMJEym027O");
+            app.UseGooglePlusAuthentication(options);
         }
     }
 }
