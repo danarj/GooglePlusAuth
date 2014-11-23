@@ -13,13 +13,20 @@
 </head>
 <body>
     <div>
-        @Html.BeginForm()
-        @Html.LabelFor(x => x.Username)
-        @Html.TextBoxFor(x => x.Username)
-        <br />
-        @Html.LabelFor(x => x.Email)
-        @Html.TextBoxFor(x => x.Email)
-        @{ Html.EndForm(); }
+        @if (TempData["x"] != null)
+        {
+            <div>@TempData["x"]</div>
+        }
+        @using (Html.BeginForm("RegisterExternalLogin", "Account", FormMethod.Post))
+        {
+            @Html.AntiForgeryToken()
+            @Html.LabelFor(x => x.Username)
+            @Html.TextBoxFor(x => x.Username)
+            <br />
+            @Html.LabelFor(x => x.Email)
+            @Html.TextBoxFor(x => x.Email)<br />
+            <input type="submit" name="submit" id="submit" value="Submit" />
+        }
     </div>
 </body>
 </html>

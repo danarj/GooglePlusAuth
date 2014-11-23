@@ -1,6 +1,7 @@
 ﻿using System.Linq;
 using System.Threading.Tasks;
 using System.Web;
+using System.Web.Helpers;
 using System.Web.Mvc;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.Owin;
@@ -319,6 +320,37 @@ namespace Google.Auth.Mvc.Empty.Controllers
         public ActionResult RegisterExternalLogin()
         {
             return View();
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult RegisterExternalLogin(ExternalLoginRegsiterModel model)
+        {
+            if (ModelState.IsValid)
+            {
+                using (AuthEntities authEntities = new AuthEntities())
+                {
+                    int intCount = (from g in authEntities.GUSERS
+                                    where g.EMAIL == model.Email && g.USERNAME == model.Username
+                                    select new { g.GUSER_ID }).Count();
+                    if (intCount > 0)
+                    {
+                        TempData["x"] = "you are already registered.";
+                        return View(model);
+                    }
+                    GUSER guser = new GUSER();
+                    guser.EMAIL = model.Email;
+                    guser.USERNAME = model.Username;
+                    authEntities.GUSERS.Add(guser);
+                    int intResult = authEntities.SaveChanges();
+                    if (intResult > 0)
+                    {
+                        return RedirectToAction("Index", "Home");
+                    }
+
+                }
+            }
+            return View(model);
         }
         //
         // GET: /Account/ExternalLoginCallback
