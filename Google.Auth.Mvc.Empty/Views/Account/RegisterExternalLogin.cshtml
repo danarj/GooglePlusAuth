@@ -1,0 +1,25 @@
+﻿@model Google.Auth.Mvc.Empty.Models.ExternalLoginRegsiterModel
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>RegisterExternalLogin</title>
+</head>
+<body>
+    <div>
+        @Html.BeginForm()
+        @Html.LabelFor(x => x.Username)
+        @Html.TextBoxFor(x => x.Username)
+        <br />
+        @Html.LabelFor(x => x.Email)
+        @Html.TextBoxFor(x => x.Email)
+        @{ Html.EndForm(); }
+    </div>
+</body>
+</html>
