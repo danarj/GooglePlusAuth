@@ -3,7 +3,9 @@ using Google.Auth.Mvc.Empty.Models;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin;
+using Microsoft.Owin.Security;
 using Microsoft.Owin.Security.Cookies;
+using Microsoft.Owin.Security.Google;
 using Owin;
 using Owin.Security.Providers.GooglePlus;
 
@@ -66,6 +68,9 @@ namespace Google.Auth.Mvc.Empty
             app.UseGooglePlusAuthentication(
                 clientId: "904155291301-cgh4235i893hd7mkmfefddq25svtjfdv.apps.googleusercontent.com",
                 clientSecret: "dfFVroejqwVxheNMJEym027O");
+ 
+
+
         }
     }
 }

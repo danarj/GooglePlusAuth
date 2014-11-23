@@ -352,6 +352,8 @@ namespace Google.Auth.Mvc.Empty.Controllers
             }
             return View(model);
         }
+
+
         //
         // GET: /Account/ExternalLoginCallback
         [AllowAnonymous]
@@ -373,6 +375,9 @@ namespace Google.Auth.Mvc.Empty.Controllers
                     ExternalLoginRegsiterModel externalLoginRegsiterModel = new ExternalLoginRegsiterModel();
                     externalLoginRegsiterModel.Email = loginInfo.Email;
                     externalLoginRegsiterModel.Username = loginInfo.DefaultUserName;
+                    //(externalLoginRegsiterModel);
+                    //TempData["x"] = externalLoginRegsiterModel.Email;
+                    //TempData["y"] = externalLoginRegsiterModel.Username;
                     return View("RegisterExternalLogin", externalLoginRegsiterModel);
                 }
                 else
