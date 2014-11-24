@@ -18,10 +18,10 @@
         {
             @Html.AntiForgeryToken()
             @Html.LabelFor(x => x.Username)
-            @Html.TextBoxFor(x => x.Username)
+            @Html.TextBoxFor(x => x.Username, new { @readonly = "readonly" })
             <br />
             @Html.LabelFor(x => x.Email)
-            @Html.TextBoxFor(x => x.Email)<br />
+            @Html.TextBoxFor(x => x.Email, new { @readonly = "readonly" })<br />
             <input type="submit" name="submit" id="submit" value="Submit" />
         }
     </div>
