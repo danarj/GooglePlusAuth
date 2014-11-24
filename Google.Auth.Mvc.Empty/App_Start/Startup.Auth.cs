@@ -70,9 +70,6 @@ namespace Google.Auth.Mvc.Empty
             options.AuthenticationMode = AuthenticationMode.Passive;
             options.ClientId = "904155291301-cgh4235i893hd7mkmfefddq25svtjfdv.apps.googleusercontent.com";
             options.ClientSecret = "dfFVroejqwVxheNMJEym027O";
-            options.Scope.Add("email");
-            
-
             //app.UseGooglePlusAuthentication(
             //    clientId: "904155291301-cgh4235i893hd7mkmfefddq25svtjfdv.apps.googleusercontent.com",
             //    clientSecret: "dfFVroejqwVxheNMJEym027O");

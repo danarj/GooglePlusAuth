@@ -316,15 +316,17 @@ namespace Google.Auth.Mvc.Empty.Controllers
             }
             return RedirectToAction("VerifyCode", new { Provider = model.SelectedProvider, ReturnUrl = model.ReturnUrl, RememberMe = model.RememberMe });
         }
-
-        public ActionResult RegisterExternalLogin()
+        [AllowAnonymous]
+        public async Task<ActionResult> RegisterExternalLogin()
         {
+
             return View();
         }
 
         [HttpPost]
+        [AllowAnonymous]
         [ValidateAntiForgeryToken]
-        public ActionResult RegisterExternalLogin(ExternalLoginRegsiterModel model)
+        public async Task<ActionResult> RegisterExternalLogin(ExternalLoginRegsiterModel model)
         {
             if (ModelState.IsValid)
             {
@@ -383,7 +385,7 @@ namespace Google.Auth.Mvc.Empty.Controllers
                 else
                 {
                     //already exist
-                    RedirectToAction("Index", "Home");
+                    return RedirectToAction("Index", "Home");
                 }
             }
             // Sign in the user with this external login provider if the user already has a login

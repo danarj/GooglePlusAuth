@@ -13,10 +13,7 @@
 </head>
 <body>
     <div>
-        @if (TempData["x"] != null)
-        {
-            <div>@TempData["x"]</div>
-        }
+
         @using (Html.BeginForm("RegisterExternalLogin", "Account", FormMethod.Post))
         {
             @Html.AntiForgeryToken()
